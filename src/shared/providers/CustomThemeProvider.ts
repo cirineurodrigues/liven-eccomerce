@@ -1,26 +1,26 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   components: {
     // Name of the component
     MuiButton: {
       defaultProps: {
-        color: 'primary',
-        variant: 'contained',
+        color: "primary",
+        variant: "contained",
       },
     },
   },
   palette: {
     primary: {
-      main: '#78D98A',
-      contrastText: '#08012A',
+      contrastText: "#08012A",
+      main: "#78D98A",
     },
     secondary: {
-      main: '#08012A',
-      contrastText: '#78D98A',
+      contrastText: "#78D98A",
+      main: "#08012A",
     },
     text: {
-      primary: '#08012A',
+      primary: "#08012A",
     },
   },
 });
