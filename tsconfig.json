@@ -9,9 +9,15 @@
     /* Aliases */
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@assets/*": ["src/shared/assets/*"],
+      "@cart/*": ["src/features/cart/*"],
       "@components/*": ["src/shared/components/*"],
-      "@providers/*": ["src/shared/providers/*"]
+      "@constants/*": ["src/shared/constants/*"],
+      "@features/*": ["src/features/*"],
+      "@products/*": ["src/features/products/*"],
+      "@providers/*": ["src/shared/providers/*"],
+      "@src/*": ["src/*"]
     },
 
     /* Bundler mode */
