@@ -7,7 +7,8 @@ import { store } from "@app/store";
 import NavBar from "@components/NavBar";
 import CustomContainer from "@components/CustomContainer";
 import theme from "@providers/CustomThemeProvider";
-import Router from "@src/Router";
+import Router from "@src/router";
+import ErrorBoundary from "@components/ErrorBoundary";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <NavBar />
           <CustomContainer>
-            <Router />
+            <ErrorBoundary>
+              <Router />
+            </ErrorBoundary>
           </CustomContainer>
         </ThemeProvider>
       </BrowserRouter>

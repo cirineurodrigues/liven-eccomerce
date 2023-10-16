@@ -1,8 +1,10 @@
 import Box from "@mui/material/Box";
 import Container, { ContainerProps } from "@mui/material/Container";
 
+import { Children } from "@sharedTypes/Types";
+
 interface ICustomContainerProps extends ContainerProps {
-  children: string | JSX.Element | JSX.Element[];
+  children: Children;
   removePaddingX?: boolean;
   removePaddingY?: boolean;
 }

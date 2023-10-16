@@ -17,7 +17,8 @@
       "@features/*": ["src/features/*"],
       "@products/*": ["src/features/products/*"],
       "@providers/*": ["src/shared/providers/*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@sharedTypes/*": ["src/shared/types/*"]
     },
 
     /* Bundler mode */
