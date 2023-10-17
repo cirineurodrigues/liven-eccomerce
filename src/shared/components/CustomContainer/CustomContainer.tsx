@@ -1,10 +1,8 @@
 import Box from "@mui/material/Box";
 import Container, { ContainerProps } from "@mui/material/Container";
 
-import { Children } from "@sharedTypes/Types";
-
 interface ICustomContainerProps extends ContainerProps {
-  children: Children;
+  children: React.ReactNode;
   removePaddingX?: boolean;
   removePaddingY?: boolean;
 }

@@ -4,11 +4,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import { Children } from "@sharedTypes/Types";
 import IMAGES from "@constants/Images";
 
 interface IErrorBoundaryProps {
-  children: Children;
+  children: React.ReactNode;
 }
 
 interface IErrorBoundaryState {

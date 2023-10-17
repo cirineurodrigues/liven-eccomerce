@@ -28,7 +28,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node"],
+    "types": ["node", "jest"],
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "esModuleInterop": true,
 
     /* Linting */
     "strict": true,
@@ -36,6 +38,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "types": ["node", "jest", "@testing-library/jest-dom"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
