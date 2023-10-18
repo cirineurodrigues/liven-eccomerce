@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import Box from "@mui/material/Box";
 
 import { store } from "@app/store";
 import NavBar from "@components/NavBar";
@@ -17,11 +18,13 @@ function App() {
         <CssBaseline />
         <ThemeProvider theme={theme}>
           <NavBar />
-          <CustomContainer>
-            <ErrorBoundary>
-              <Router />
-            </ErrorBoundary>
-          </CustomContainer>
+          <Box bgcolor="#F9F9F9" mt="65px">
+            <CustomContainer>
+              <ErrorBoundary>
+                <Router />
+              </ErrorBoundary>
+            </CustomContainer>
+          </Box>
         </ThemeProvider>
       </BrowserRouter>
     </Provider>

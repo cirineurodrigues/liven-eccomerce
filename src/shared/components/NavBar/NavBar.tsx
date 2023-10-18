@@ -14,8 +14,8 @@ const NavBar: React.FC = () => {
   return (
     <AppBar
       color="secondary"
-      position="static"
-      sx={{ "&.MuiAppBar-root": { padding: 0 } }}
+      position="fixed"
+      sx={{ "&.MuiAppBar-root": { height: 65, padding: 0 } }}
     >
       <Toolbar sx={{ "&.MuiToolbar-root": { padding: 0 } }}>
         <CustomContainer removePaddingY>

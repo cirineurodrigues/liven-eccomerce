@@ -8,13 +8,13 @@ export const MENU_ITEMS: IMenuItems[] = [
   {
     icon: <LocalMallIcon sx={{ color: "#FFF" }} />,
     id: 1,
-    label: "Produtos",
+    label: "Products",
     path: PATHS.ROOT,
   },
   {
     icon: <ShoppingCartIcon sx={{ color: "#FFF" }} />,
     id: 2,
-    label: "Carrinho",
+    label: "Cart",
     path: PATHS.CART,
   },
 ];

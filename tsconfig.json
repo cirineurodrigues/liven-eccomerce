@@ -17,6 +17,7 @@
       "@features/*": ["src/features/*"],
       "@products/*": ["src/features/products/*"],
       "@providers/*": ["src/shared/providers/*"],
+      "@services/*": ["src/shared/services/*"],
       "@src/*": ["src/*"],
       "@sharedTypes/*": ["src/shared/types/*"]
     },
