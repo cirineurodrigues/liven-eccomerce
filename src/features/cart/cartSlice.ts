@@ -26,7 +26,7 @@ export const { addProduct } = cartSlice.actions;
 
 // selectors
 
-export const selectAmountProductsAtCart = (state: RootState) =>
+export const selectAmountItemsInCart = (state: RootState) =>
   state.cart.cartProducts.length;
 
 export const selectProductsAtCart = (state: RootState) =>

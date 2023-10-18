@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
@@ -14,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import { useAppDispatch } from "@app/hooks";
 import { addProduct } from "@cart/cartSlice";
 import CustomContainer from "@components/CustomContainer";
+import PATHS from "@constants/Paths";
 import { IProduct } from "@products/types/ProductTypes";
 import { handleImageSrc } from "@utils/functionUtils";
 import { formatToCurrency } from "@utils/stringUtils";
@@ -23,6 +25,7 @@ interface IProductDetailsProps {
 }
 
 const ProductDetails: React.FC<IProductDetailsProps> = ({ product }) => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const formatedPrice = formatToCurrency(product.price);
@@ -37,6 +40,8 @@ const ProductDetails: React.FC<IProductDetailsProps> = ({ product }) => {
     );
     dispatch(addProduct(product));
   };
+
+  const goToProductsPage = () => navigate(PATHS.ROOT);
 
   useEffect(() => {
     if (!_isUndefined(product?.title)) {
@@ -98,9 +103,18 @@ const ProductDetails: React.FC<IProductDetailsProps> = ({ product }) => {
                   {formatedPrice}
                 </Typography>
               </Box>
-              <Typography variant="body1">{product?.description}</Typography>
+              <Typography
+                maxHeight={300}
+                sx={{ overflowY: "auto" }}
+                variant="body1"
+              >
+                {product?.description}
+              </Typography>
             </Box>
-            <Box>
+            <Box display="flex" flexDirection="column" rowGap={2}>
+              <Button fullWidth onClick={goToProductsPage} variant="outlined">
+                See Other Products
+              </Button>
               <Button onClick={addProductToCart} fullWidth>
                 Add To Cart
               </Button>

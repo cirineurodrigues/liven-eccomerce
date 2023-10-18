@@ -8,6 +8,10 @@ const IMAGES = {
     ALT: "Default image ilustration, with two black mountains, two gray clouds and a green sun",
     SRC: new URL("../assets/images/default-image.svg", import.meta.url).href,
   } as IImage,
+  EMPTY_CART: {
+    ALT: "Empty cart image ilustration, with a man dressed in a green t-shirt and dark gray pants, holdin a paper next to a shopping cart.",
+    SRC: new URL("../assets/images/empty-cart.svg", import.meta.url).href,
+  } as IImage,
   EMPTY_STATE: {
     ALT: "",
     SRC: new URL("../assets/images/empty-state.svg", import.meta.url).href,

@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 
 import { useAppSelector } from "@app/hooks";
-import { selectAmountProductsAtCart } from "@cart/cartSlice";
+import { selectAmountItemsInCart } from "@cart/cartSlice";
 import CustomContainer from "@components/CustomContainer";
 import ShoppingCartIconBadge from "@components/ShoppingCartIconBadge";
 import SideBar from "@components/SideBar";
@@ -13,7 +13,7 @@ import IMAGES from "@constants/Images";
 import PATHS from "@constants/Paths";
 
 const NavBar: React.FC = () => {
-  const amountProductsAtCart = useAppSelector(selectAmountProductsAtCart);
+  const amountItemsInCart = useAppSelector(selectAmountItemsInCart);
 
   return (
     <AppBar
@@ -38,9 +38,7 @@ const NavBar: React.FC = () => {
             </Link>
 
             <Box columnGap={1} display="flex">
-              <ShoppingCartIconBadge
-                amountProductsAtCart={amountProductsAtCart}
-              />
+              <ShoppingCartIconBadge amountItemsInCart={amountItemsInCart} />
               <SideBar />
             </Box>
           </Box>

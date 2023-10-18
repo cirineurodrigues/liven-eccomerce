@@ -7,16 +7,16 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PATHS from "@constants/Paths";
 
 interface IShoppingCartIconBadgeProps {
-  amountProductsAtCart: number;
+  amountItemsInCart: number;
 }
 
 const ShoppingCartIconBadge: React.FC<IShoppingCartIconBadgeProps> = ({
-  amountProductsAtCart,
+  amountItemsInCart,
 }) => {
   return (
     <Link to={PATHS.CART}>
       <IconButton color="primary">
-        <Badge badgeContent={amountProductsAtCart} color="primary" showZero>
+        <Badge badgeContent={amountItemsInCart} color="primary" showZero>
           <ShoppingCartIcon color="primary" />
         </Badge>
       </IconButton>

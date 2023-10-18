@@ -53,7 +53,8 @@ const ProductDetailsSkeleton: React.FC = () => {
                 <Skeleton key={index.toString()} height={24} width="100%" />
               ))}
             </Box>
-            <Box>
+            <Box display="flex" flexDirection="column" rowGap={2}>
+              <Skeleton height={36.5} width="100%" />
               <Skeleton height={36.5} width="100%" />
             </Box>
           </Grid>
