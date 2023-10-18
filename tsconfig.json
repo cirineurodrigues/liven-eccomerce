@@ -19,7 +19,8 @@
       "@providers/*": ["src/shared/providers/*"],
       "@services/*": ["src/shared/services/*"],
       "@src/*": ["src/*"],
-      "@sharedTypes/*": ["src/shared/types/*"]
+      "@sharedTypes/*": ["src/shared/types/*"],
+      "@utils/*": ["src/shared/utils/*"]
     },
 
     /* Bundler mode */

@@ -16,6 +16,7 @@ export default defineConfig({
       "@services": path.resolve(__dirname, "./src/shared/services"),
       "@src": path.resolve(__dirname, "./src"),
       "@sharedTypes": path.resolve(__dirname, "./src/shared/types"),
+      "@utils": path.resolve(__dirname, "./src/shared/utils"),
     },
   },
   plugins: [react()],

@@ -1,6 +1,4 @@
-import { IProduct } from "@products/types/ProductTypes";
-
-import _isEmpty from "lodash/isEmpty";
+import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
@@ -11,12 +9,14 @@ import Paper from "@mui/material/Paper";
 import Rating from "@mui/material/Rating";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import { StyledProductTitle } from "./ProductCard.styles";
-import { formatToCurrency } from "@src/shared/utils/stringUtils";
 
+import { StyledProductTitle } from "./ProductCard.styles";
 import { useAppDispatch } from "@app/hooks";
-import IMAGES from "@constants/Images";
 import { addProduct } from "@cart/cartSlice";
+import PATHS from "@constants/Paths";
+import { IProduct } from "@products/types/ProductTypes";
+import { handleImageSrc } from "@utils/functionUtils";
+import { formatToCurrency } from "@utils/stringUtils";
 
 interface IProductProps {
   product: IProduct;
@@ -25,12 +25,11 @@ interface IProductProps {
 
 const ProductCard: React.FC<IProductProps> = ({ product }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const formatedPrice = formatToCurrency(product.price);
 
-  const imageSrc = _isEmpty(product?.image)
-    ? IMAGES.DEFAULT_IMAGE.SRC
-    : product?.image;
+  const imageSrc = handleImageSrc(product?.image);
 
   const addProductToCart = () => {
     toast.success(
@@ -40,6 +39,9 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
     );
     dispatch(addProduct(product));
   };
+
+  const handleGoToProductDetails = () =>
+    navigate(PATHS.PRODUCT_BY_ID(product.id));
 
   return (
     <Grid height={520} item lg={4} md={6} xs={12}>
@@ -51,7 +53,12 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
           padding: theme.spacing(2),
         })}
       >
-        <Box display="flex" height={210} justifyContent="center">
+        <Box
+          display="flex"
+          height={210}
+          justifyContent="center"
+          position="relative"
+        >
           <img
             alt={product?.description}
             loading="lazy"
@@ -59,6 +66,26 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
             style={{ maxWidth: 200, objectFit: "contain" }}
             width="100%"
           />
+          <Box
+            alignItems="center"
+            display="flex"
+            height="100%"
+            justifyContent="center"
+            sx={{
+              opacity: 0,
+              ":hover": {
+                background: "#08012A80",
+                opacity: 1,
+                transition: "opacity .3s",
+              },
+            }}
+            position="absolute"
+            width="100%"
+          >
+            <Button onClick={handleGoToProductDetails} variant="outlined">
+              See Details
+            </Button>
+          </Box>
         </Box>
         <Box flex={1} flexDirection="column" py={2}>
           <Box alignItems="center" display="flex" flexWrap="wrap">

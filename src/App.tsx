@@ -22,8 +22,11 @@ function App() {
         <ThemeProvider theme={theme}>
           <ToastContainer style={{ top: 76 }} />
           <NavBar />
-          <Box bgcolor="#F9F9F9" minHeight="calc(100vh - 65px)" mt="65px">
-            <CustomContainer>
+          <Box bgcolor="#F9F9F9" mt="65px">
+            <CustomContainer
+              boxProps={{ flex: 1 }}
+              sx={{ display: "flex", minHeight: "calc(100vh - 65px)" }}
+            >
               <ErrorBoundary>
                 <Router />
               </ErrorBoundary>

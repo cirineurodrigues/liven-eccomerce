@@ -8,6 +8,10 @@ const IMAGES = {
     ALT: "Default image ilustration, with two black mountains, two gray clouds and a green sun",
     SRC: new URL("../assets/images/default-image.svg", import.meta.url).href,
   } as IImage,
+  EMPTY_STATE: {
+    ALT: "",
+    SRC: new URL("../assets/images/empty-state.svg", import.meta.url).href,
+  } as IImage,
   ERROR_IMAGE: {
     ALT: "Illustration of a girl dressed in a green t-shirt and black pants, in a crouched position, with a tool in her hand. In the background is a screen, with an insect on the left and on the right some text simulations.",
     SRC: new URL("../assets/images/error.svg", import.meta.url).href,

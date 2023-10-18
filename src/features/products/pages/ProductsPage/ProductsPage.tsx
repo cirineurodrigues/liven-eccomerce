@@ -1,4 +1,4 @@
-// import _isEmpty from "lodash/isEmpty";
+import { useEffect } from "react";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -6,10 +6,14 @@ import Grid from "@mui/material/Grid";
 
 import { useGetAllProductsQuery } from "@services/productsService";
 import ProductCard from "@products/components/ProductCard/ProductCard";
-import ProductCardsSkeleton from "./components/ProductCardsSkeleton";
+import ProductCardsSkeleton from "@products/components/ProductCardsSkeleton";
 
-const Products: React.FC = () => {
+const ProductsPage: React.FC = () => {
   const { data, isLoading } = useGetAllProductsQuery();
+
+  useEffect(() => {
+    document.title = "Liven Ecommerce | Products";
+  }, []);
 
   return (
     <Box>
@@ -26,4 +30,4 @@ const Products: React.FC = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

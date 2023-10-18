@@ -42,10 +42,11 @@ class ErrorBoundary extends Component<
           alignItems="center"
           display="flex"
           flexDirection="column"
+          height="100%"
           justifyContent="center"
         >
-          <Typography align="center" color="secondary" variant="h4" my={6}>
-            Sentimos muito, houve um problema 😞
+          <Typography align="center" color="secondary" py={6} variant="h4">
+            We are sorry, there was a problem 😞
           </Typography>
           <Box maxWidth={500}>
             <img
@@ -55,9 +56,9 @@ class ErrorBoundary extends Component<
             />
           </Box>
           <Typography align="center" color="secondary" variant="h5" my={6}>
-            Que tal tentar recarregar a página?
+            What about trying to refresh the page?
           </Typography>
-          <Button onClick={this.reloadWindow}>Recaregar Página</Button>
+          <Button onClick={this.reloadWindow}>Reload Page</Button>
         </Box>
       );
     }
