@@ -5,6 +5,6 @@ export const StyledProductTitle = styled(Typography)({
   display: "-webkit-box",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  "-webkit-box-orient": "vertical",
-  "-webkit-line-clamp": "2",
+  WebkitBoxOrient: "vertical",
+  WebkitLineClamp: "2",
 });

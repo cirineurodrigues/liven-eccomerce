@@ -18,7 +18,7 @@ function App() {
         <CssBaseline />
         <ThemeProvider theme={theme}>
           <NavBar />
-          <Box bgcolor="#F9F9F9" mt="65px">
+          <Box bgcolor="#F9F9F9" minHeight="calc(100vh - 65px)" mt="65px">
             <CustomContainer>
               <ErrorBoundary>
                 <Router />

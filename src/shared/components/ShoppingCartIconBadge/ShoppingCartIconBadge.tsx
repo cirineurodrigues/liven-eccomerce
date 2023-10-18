@@ -4,13 +4,15 @@ import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-import { useAppSelector } from "@app/hooks";
-import { selectAmountProductsAtCart } from "@cart/cartSlice";
 import PATHS from "@constants/Paths";
 
-const ShoppingCartIconBadge: React.FC = () => {
-  const amountProductsAtCart = useAppSelector(selectAmountProductsAtCart);
+interface IShoppingCartIconBadgeProps {
+  amountProductsAtCart: number;
+}
 
+const ShoppingCartIconBadge: React.FC<IShoppingCartIconBadgeProps> = ({
+  amountProductsAtCart,
+}) => {
   return (
     <Link to={PATHS.CART}>
       <IconButton color="primary">

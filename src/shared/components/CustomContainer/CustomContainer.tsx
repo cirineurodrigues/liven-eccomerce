@@ -14,11 +14,7 @@ const CustomContainer: React.FC<ICustomContainerProps> = ({
   ...props
 }) => {
   return (
-    <Container
-      maxWidth="lg"
-      sx={{ "&.MuiContainer-root": { padding: 0 } }}
-      {...props}
-    >
+    <Container maxWidth="lg" disableGutters {...props}>
       <Box px={removePaddingX ? 0 : 4} py={removePaddingY ? 0 : 4}>
         {children}
       </Box>
