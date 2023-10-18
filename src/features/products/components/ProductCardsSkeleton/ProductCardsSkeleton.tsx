@@ -13,7 +13,7 @@ const ProductCardSkeleton: React.FC<IProductCardsSkeleton> = ({
   const fakeProducts = new Array(cardsAmount).fill("");
 
   return fakeProducts.map((_, index) => (
-    <Grid height={520} item key={index.toString()} md={4} sm={6} xs={12}>
+    <Grid height={520} item key={index.toString()} lg={4} md={6} xs={12}>
       <Paper
         sx={(theme) => ({
           display: "flex",
