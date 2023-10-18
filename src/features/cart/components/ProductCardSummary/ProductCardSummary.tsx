@@ -47,10 +47,12 @@ const ProductCardSummary: React.FC<IProductCardSummaryProps> = ({
             />
           </Box>
           <Box flex={1} px={2}>
-            <Tooltip title={productInCart?.title}>
-              <EllipsisText component="h2" fontWeight={500} variant="body1">
-                {productInCart?.title}
-              </EllipsisText>
+            <Tooltip placement="bottom-start" title={productInCart?.title}>
+              <Box>
+                <EllipsisText component="h2" fontWeight={500} variant="body1">
+                  {productInCart?.title}
+                </EllipsisText>
+              </Box>
             </Tooltip>
           </Box>
           <Box

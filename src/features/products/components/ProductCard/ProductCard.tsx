@@ -93,9 +93,11 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
             <Typography variant="body1">{`${product?.rating?.rate} out of 5`}</Typography>
           </Box>
           <Tooltip placement="bottom-start" title={product?.title}>
-            <EllipsisText color="secondary" pt={2} variant="h6">
-              {product?.title}
-            </EllipsisText>
+            <Box>
+              <EllipsisText color="secondary" pt={2} variant="h6">
+                {product?.title}
+              </EllipsisText>
+            </Box>
           </Tooltip>
           <Typography color="secondary" variant="body1">
             {product?.category}
