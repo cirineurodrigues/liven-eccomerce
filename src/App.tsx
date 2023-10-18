@@ -1,6 +1,9 @@
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 
@@ -17,6 +20,7 @@ function App() {
       <BrowserRouter>
         <CssBaseline />
         <ThemeProvider theme={theme}>
+          <ToastContainer style={{ top: 76 }} />
           <NavBar />
           <Box bgcolor="#F9F9F9" minHeight="calc(100vh - 65px)" mt="65px">
             <CustomContainer>
