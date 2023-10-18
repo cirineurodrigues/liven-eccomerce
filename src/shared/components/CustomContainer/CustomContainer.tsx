@@ -19,8 +19,15 @@ const CustomContainer: React.FC<ICustomContainerProps> = ({
     <Container maxWidth="lg" disableGutters {...props}>
       <Box
         minHeight="inherit"
-        px={removePaddingX ? 0 : 4}
-        py={removePaddingY ? 0 : 4}
+        sx={(theme) => ({
+          paddingX: removePaddingX ? 0 : theme.spacing(2),
+          paddingY: removePaddingY ? 0 : theme.spacing(2),
+
+          [theme.breakpoints.up("md")]: {
+            paddingX: removePaddingX ? 0 : theme.spacing(4),
+            paddingY: removePaddingY ? 0 : theme.spacing(4),
+          },
+        })}
         {...boxProps}
       >
         {children}

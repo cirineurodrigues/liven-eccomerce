@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import { toast } from "react-toastify";
-
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -10,13 +8,14 @@ import Rating from "@mui/material/Rating";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 
-import { StyledProductTitle } from "./ProductCard.styles";
-import { useAppDispatch } from "@app/hooks";
-import { addProduct } from "@cart/cartSlice";
+import { useAppSelector } from "@app/hooks";
+import { selectProductAlreadyInCart } from "@cart/cartSlice";
+import EllipsisText from "@components/EllipsisText";
 import PATHS from "@constants/Paths";
 import { IProduct } from "@products/types/ProductTypes";
 import { handleImageSrc } from "@utils/functionUtils";
 import { formatToCurrency } from "@utils/stringUtils";
+import useCart from "@cart/hooks/useCart";
 
 interface IProductProps {
   product: IProduct;
@@ -24,21 +23,16 @@ interface IProductProps {
 }
 
 const ProductCard: React.FC<IProductProps> = ({ product }) => {
-  const dispatch = useAppDispatch();
+  const { handleAddOrIncrementProduct } = useCart();
   const navigate = useNavigate();
+
+  const productAlreadyInCart = useAppSelector((state) =>
+    selectProductAlreadyInCart(state, product.id)
+  );
 
   const formatedPrice = formatToCurrency(product.price);
 
   const imageSrc = handleImageSrc(product?.image);
-
-  const addProductToCart = () => {
-    toast.success(
-      <>
-        <strong>{product.title}</strong> has been added to cart.
-      </>
-    );
-    dispatch(addProduct(product));
-  };
 
   const handleGoToProductDetails = () =>
     navigate(PATHS.PRODUCT_BY_ID(product.id));
@@ -99,9 +93,9 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
             <Typography variant="body1">{`${product?.rating?.rate} out of 5`}</Typography>
           </Box>
           <Tooltip placement="bottom-start" title={product?.title}>
-            <StyledProductTitle color="secondary" pt={2} variant="h6">
+            <EllipsisText color="secondary" pt={2} variant="h6">
               {product?.title}
-            </StyledProductTitle>
+            </EllipsisText>
           </Tooltip>
           <Typography color="secondary" variant="body1">
             {product?.category}
@@ -117,7 +111,12 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
           </Typography>
         </Box>
         <Box>
-          <Button onClick={addProductToCart} fullWidth>
+          <Button
+            onClick={() =>
+              handleAddOrIncrementProduct(product, productAlreadyInCart)
+            }
+            fullWidth
+          >
             Add To Cart
           </Button>
         </Box>

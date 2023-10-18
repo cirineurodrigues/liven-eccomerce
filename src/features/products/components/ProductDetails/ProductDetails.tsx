@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { toast } from "react-toastify";
-
 import _isUndefined from "lodash/isUndefined";
 
 import Box from "@mui/material/Box";
@@ -12,13 +10,14 @@ import Paper from "@mui/material/Paper";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 
-import { useAppDispatch } from "@app/hooks";
-import { addProduct } from "@cart/cartSlice";
+import { useAppSelector } from "@app/hooks";
+import { selectProductAlreadyInCart } from "@cart/cartSlice";
 import CustomContainer from "@components/CustomContainer";
 import PATHS from "@constants/Paths";
 import { IProduct } from "@products/types/ProductTypes";
 import { handleImageSrc } from "@utils/functionUtils";
 import { formatToCurrency } from "@utils/stringUtils";
+import useCart from "@cart/hooks/useCart";
 
 interface IProductDetailsProps {
   product: IProduct;
@@ -26,20 +25,15 @@ interface IProductDetailsProps {
 
 const ProductDetails: React.FC<IProductDetailsProps> = ({ product }) => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const { handleAddOrIncrementProduct } = useCart();
+
+  const productAlreadyInCart = useAppSelector((state) =>
+    selectProductAlreadyInCart(state, product.id)
+  );
 
   const formatedPrice = formatToCurrency(product.price);
 
   const imageSrc = handleImageSrc(product?.image);
-
-  const addProductToCart = () => {
-    toast.success(
-      <>
-        <strong>{product.title}</strong> has been added to cart.
-      </>
-    );
-    dispatch(addProduct(product));
-  };
 
   const goToProductsPage = () => navigate(PATHS.ROOT);
 
@@ -115,7 +109,12 @@ const ProductDetails: React.FC<IProductDetailsProps> = ({ product }) => {
               <Button fullWidth onClick={goToProductsPage} variant="outlined">
                 See Other Products
               </Button>
-              <Button onClick={addProductToCart} fullWidth>
+              <Button
+                onClick={() =>
+                  handleAddOrIncrementProduct(product, productAlreadyInCart)
+                }
+                fullWidth
+              >
                 Add To Cart
               </Button>
             </Box>
