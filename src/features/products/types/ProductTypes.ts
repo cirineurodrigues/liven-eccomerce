@@ -16,4 +16,6 @@ export interface IProduct {
 export enum PRODUCT_CATEGORIES {
   ELECTRONICS = "electronics",
   JEWELERY = "jewelery",
+  MENS_CLOTHING = "men's clothing",
+  WOMENS_CLOTHIND = "women's clothing",
 }

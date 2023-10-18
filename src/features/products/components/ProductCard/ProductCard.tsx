@@ -2,6 +2,8 @@ import { IProduct } from "@products/types/ProductTypes";
 
 import _isEmpty from "lodash/isEmpty";
 
+import { toast } from "react-toastify";
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -12,7 +14,9 @@ import Typography from "@mui/material/Typography";
 import { StyledProductTitle } from "./ProductCard.styles";
 import { formatToCurrency } from "@src/shared/utils/stringUtils";
 
+import { useAppDispatch } from "@app/hooks";
 import IMAGES from "@constants/Images";
+import { addProduct } from "@cart/cartSlice";
 
 interface IProductProps {
   product: IProduct;
@@ -20,11 +24,22 @@ interface IProductProps {
 }
 
 const ProductCard: React.FC<IProductProps> = ({ product }) => {
+  const dispatch = useAppDispatch();
+
   const formatedPrice = formatToCurrency(product.price);
 
   const imageSrc = _isEmpty(product?.image)
     ? IMAGES.DEFAULT_IMAGE.SRC
     : product?.image;
+
+  const addProductToCart = () => {
+    toast.success(
+      <>
+        <strong>{product.title}</strong> has been added to cart.
+      </>
+    );
+    dispatch(addProduct(product));
+  };
 
   return (
     <Grid height={520} item lg={4} md={6} xs={12}>
@@ -75,7 +90,9 @@ const ProductCard: React.FC<IProductProps> = ({ product }) => {
           </Typography>
         </Box>
         <Box>
-          <Button fullWidth>Add To Cart</Button>
+          <Button onClick={addProductToCart} fullWidth>
+            Add To Cart
+          </Button>
         </Box>
       </Paper>
     </Grid>
