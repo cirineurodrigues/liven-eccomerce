@@ -40,8 +40,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules", "**/*.spec.ts"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.tsx", "/*.ts", "./src/**/*.ts"],
   "types": ["node", "jest", "@testing-library/jest-dom"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
